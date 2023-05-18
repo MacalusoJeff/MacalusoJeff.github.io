@@ -1,0 +1,9 @@
+main:
+  - title: "Posts"
+    url: /post/
+  # - title: "Portfolio"
+  #   url: /portfolio/
+  - title: "Cookbook"
+    url: /cookbook/
+  - title: "About"
+    url: /about/
