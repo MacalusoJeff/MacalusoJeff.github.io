@@ -6,7 +6,8 @@ date:   2023-04-27 21:04:11 -0500
 categories: post
 classes: wide
 header:
-    image: /assets/images/tigerMountain.jpg
+    image: /assets/images/calendar-banner.jpg
+    caption: "Image credit: [pertusinas]([https://en.wikipedia.org/wiki/Antonio_Gisbert#/media/File:Fusilamiento_de_Torrijos_(Gisbert).jpg](https://www.riograndesierraclub.org/wp-content/uploads/2015/04/calendar-banner.jpg))"
 ---
 # Why you shouldn't track metrics by calendar month
 
