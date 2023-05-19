@@ -234,8 +234,6 @@ fig = px.bar(MAU_calendar_month, x='Month', y='z_scores', title='Z scores for MA
 fig.show('svg')
 ```
 
-    Intel(R) Extension for Scikit-learn* enabled (https://github.com/intel/scikit-learn-intelex)
-
 <img src="https://github.com/JeffMacaluso/JeffMacaluso.github.io/blob/master/assets/images/metrics/output_8_1.svg?raw=true">
 
 Yikes, that's a lot of variation! Praciticioners commonly use a z-score of +/- 3 to determine if something is an outlier, and February is very close to that threshold with a z-score of -2.8! It's a good idea to have anomaly detection algorithms running on metrics (looking at a dashboard every day often isn't valuable, knowing when a metric changed significantly is), and February may trigger an alert despite not actually being an anomaly.
