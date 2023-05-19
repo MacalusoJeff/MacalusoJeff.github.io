@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Why you shouldn't track metrics by calendar month"
+title:  "Why you shouldn't track metrics by calendar months"
 excerpt: "A quick post on metrics"
 date:   2023-04-27 21:04:11 -0500
 categories: post
