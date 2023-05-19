@@ -7,7 +7,7 @@ categories: post
 classes: wide
 header:
     image: /assets/images/calendar-banner.jpg
-    caption: "Image credit: [pertusinas]([https://en.wikipedia.org/wiki/Antonio_Gisbert#/media/File:Fusilamiento_de_Torrijos_(Gisbert).jpg](https://www.riograndesierraclub.org/wp-content/uploads/2015/04/calendar-banner.jpg))"
+    caption: "Image credit: [pertusinas](https://www.riograndesierraclub.org/wp-content/uploads/2015/04/calendar-banner.jpg)"
 ---
 
 This is a topic that has come up a number of times in my career. Folks want to measure how users are using their product in a variety of ways, and some of those ways include longer-term metrics. It's natural to want to measure these longer-term metrics by calendar months, but doing so can introduce noise, be misleading, and lead to incorrect conclusions. We'll explore this with two standard metrics: monthly active users (**MAU**) and next-month **retention**.
