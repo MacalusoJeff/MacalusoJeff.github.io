@@ -332,7 +332,7 @@ linear_assumption(linear_model, linear_X, linear_y)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/11_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/11_1.png">
 
 
 We can see a relatively even spread around the diagonal line.
@@ -350,7 +350,7 @@ linear_assumption(boston_model, boston.data, boston.target)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/13_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/13_1.png">
 
 
 We can see in this case that there is not a perfect linear relationship. Our predictions are biased towards lower values in both the lower end (around 5-10) and especially at the higher values (above 40).
@@ -426,7 +426,7 @@ normal_errors_assumption(linear_model, linear_X, linear_y)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/18_2.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/18_2.png">
 
 
     
@@ -448,7 +448,7 @@ normal_errors_assumption(boston_model, boston.data, boston.target)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/20_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/20_1.png">
 
 
     
@@ -536,7 +536,7 @@ multicollinearity_assumption(linear_model, linear_X, linear_y, linear_feature_na
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/24_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/24_1.png">
 
 
     Variance Inflation Factors (VIF)
@@ -574,7 +574,7 @@ multicollinearity_assumption(boston_model, boston.data, boston.target, boston.fe
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/26_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/26_1.png">
 
 
     Variance Inflation Factors (VIF)
@@ -747,7 +747,7 @@ homoscedasticity_assumption(linear_model, linear_X, linear_y)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/38_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/38_1.png">
 
 
 There don't appear to be any obvious problems with that.
@@ -765,7 +765,7 @@ homoscedasticity_assumption(boston_model, boston.data, boston.target)
     
 
 
-<img src="https://raw.githubusercontent.com/JeffMacaluso/JeffMacaluso.github.io/master/_posts/LinearRegressionAssumptions_files/40_1.png">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/master/_posts/LinearRegressionAssumptions_files/40_1.png">
 
 
 We can't see a fully uniform variance across our residuals, so this is potentially problematic. However, we know from our other tests that our model has several issues and is under predicting in many cases.
