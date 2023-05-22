@@ -265,13 +265,13 @@ print('R^2: {0}'.format(linear_r2))
 
 
 ```python
-def calculate_residuals(model, features, label):
+def calculate_residuals(model, features, label) -> pd.DataFrame:
     """
     Creates predictions on the features with the model and calculates residuals
     """
     predictions = model.predict(features)
     df_results = pd.DataFrame({'Actual': label, 'Predicted': predictions})
-    df_results['Residuals'] = abs(df_results['Actual']) - abs(df_results['Predicted'])
+    df_results['Residuals'] = df_results['Actual'] - df_results['Predicted']
     
     return df_results
 ```
@@ -294,7 +294,7 @@ This assumes that there is a linear relationship between the predictors (e.g. in
 
 
 ```python
-def linear_assumption(model, features, label):
+def linear_assumption(model, features, label) -> None:
     """
     Linearity: Assumes that there is a linear relationship between the predictors and
                the response variable. If not, either a quadratic term or another
@@ -369,7 +369,7 @@ More specifically, this assumes that the error terms of the model are normally d
 
 
 ```python
-def normal_errors_assumption(model, features, label, p_value_thresh=0.05):
+def normal_errors_assumption(model, features, label, p_value_thresh=0.05) -> None:
     """
     Normality: Assumes that the error terms are normally distributed. If they are not,
     nonlinear transformations of variables may solve this.
@@ -473,7 +473,7 @@ This assumes that the predictors used in the regression are not correlated with 
 
 
 ```python
-def multicollinearity_assumption(model, features, label, feature_names=None):
+def multicollinearity_assumption(model, features, label, feature_names=None) -> None:
     """
     Multicollinearity: Assumes that predictors are not correlated with each other. If there is
                        correlation among the predictors, then either remove prepdictors with high
@@ -620,7 +620,7 @@ This assumes no autocorrelation of the error terms. Autocorrelation being presen
 
 
 ```python
-def autocorrelation_assumption(model, features, label):
+def autocorrelation_assumption(model, features, label) -> None:
     """
     Autocorrelation: Assumes that there is no autocorrelation in the residuals. If there is
                      autocorrelation, then there is a pattern that is not explained due to
@@ -710,7 +710,7 @@ This assumes homoscedasticity, which is the same variance within our error terms
 
 
 ```python
-def homoscedasticity_assumption(model, features, label):
+def homoscedasticity_assumption(model, features, label) -> None:
     """
     Homoscedasticity: Assumes that the errors exhibit constant variance
     """
@@ -814,7 +814,7 @@ def linear_regression_assumptions(features, label, feature_names=None):
     # Creating predictions and calculating residuals for assumption tests
     predictions = model.predict(features)
     df_results = pd.DataFrame({'Actual': label, 'Predicted': predictions})
-    df_results['Residuals'] = abs(df_results['Actual']) - abs(df_results['Predicted'])
+    df_results['Residuals'] = df_results['Actual'] - df_results['Predicted']
 
     
     def linear_assumption():
