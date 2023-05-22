@@ -724,12 +724,14 @@ def homoscedasticity_assumption(model, features, label) -> None:
     # Plotting the residuals
     plt.subplots(figsize=(12, 6))
     ax = plt.subplot(111)  # To remove spines
-    plt.scatter(x=df_results.index, y=df_results.Residuals, alpha=0.5)
-    plt.plot(np.repeat(0, df_results.index.max()), color='darkorange', linestyle='--')
+    plt.scatter(x=label, y=df_results.Residuals, alpha=0.5)
+    plt.axhline(0, color='darkorange', linestyle='--')
     ax.spines['right'].set_visible(False)  # Removing the right spine
     ax.spines['top'].set_visible(False)  # Removing the top spine
-    plt.title('Residuals')
-    plt.show()  
+    plt.title('Homoscedasticity Check')
+    plt.ylabel('Residuals')
+    plt.xlabel('Labels')
+    plt.show()
 ```
 
 Plotting the residuals of our ideal dataset:
@@ -974,8 +976,8 @@ def linear_regression_assumptions(features, label, feature_names=None):
         # Plotting the residuals
         plt.subplots(figsize=(12, 6))
         ax = plt.subplot(111)  # To remove spines
-        plt.scatter(x=df_results.index, y=df_results.Residuals, alpha=0.5)
-        plt.plot(np.repeat(0, df_results.index.max()), color='darkorange', linestyle='--')
+        plt.scatter(x=label, y=df_results.Residuals, alpha=0.5)
+        plt.axhline(0, color='darkorange', linestyle='--')
         ax.spines['right'].set_visible(False)  # Removing the right spine
         ax.spines['top'].set_visible(False)  # Removing the top spine
         plt.title('Residuals')
