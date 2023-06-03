@@ -8,6 +8,8 @@ author_profile: true
 
 Personal reference scripts for commonly used code
 
+**Note:** I'm in the process of re-arranging this repo, so many of the links below may be broken
+
 - **[Machine Learning](https://github.com/MacalusoJeff/Cookbook/tree/master/MachineLearning):** A folder containing scripts for commonly used machine learning code
     - **[Model Training](https://github.com/MacalusoJeff/Cookbook/blob/master/MachineLearning/ModelTraining.py):** Training, tuning, and evaluating models
         - [Cross Validation](https://github.com/MacalusoJeff/Cookbook/blob/master/MachineLearning/ModelTraining.py#L27)
