@@ -28,7 +28,7 @@ Personal reference scripts for commonly used code
         - [SparkML.py](https://github.com/MacalusoJeff/Cookbook/blob/main/MachineLearning/SparkML/SparkML.py): Commonly used code for SparkML. Includes preprocessing, hyperparameter tuning, cross validation, and so on.
 - **[Plotting](https://github.com/MacalusoJeff/Cookbook/tree/main/Plotting):** Code snippets for common plots
     - **[Matplotlib.py](https://github.com/MacalusoJeff/Cookbook/tree/main/Plotting/Matplotlib.py)**
-    - **[Plotly.py](https://github.com/MacalusoJeff/Cookbook/tree/main/PlottingPlotly.py)**
+    - **[Plotly.py](https://github.com/MacalusoJeff/Cookbook/tree/main/Plotting/Plotly.py)**
 - **[Misc](https://github.com/MacalusoJeff/Cookbook/tree/main/Misc):** For scripts that don't fit within any other folders
     - **[EDA.py](https://github.com/MacalusoJeff/Cookbook/tree/main/Misc/EDA.py):** EDA reports, missing values, and outliers
     - **[NLP.py](https://github.com/MacalusoJeff/Cookbook/tree/main/Misc/NLP.py):** NLTK natural language processing tasks
