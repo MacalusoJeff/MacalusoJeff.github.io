@@ -6,7 +6,7 @@ date:   2023-07-07 21:04:11 -0500
 categories: post
 classes: wide
 header:
-    image: /assets/images/jamesWebbDeepField.png
+    image: /assets/images/jamesWebbDeepField.jpg
     caption: "Credit: NASA"
 ---
 
