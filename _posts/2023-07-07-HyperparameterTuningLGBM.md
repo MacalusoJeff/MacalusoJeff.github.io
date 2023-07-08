@@ -1,7 +1,7 @@
 ---
 layout: single
 title:  "Hyperparameter Tuning LightGBM (incl. early stopping)"
-excerpt: "Automating assumption testing with a script to perform statistical tests and plot visualizations"
+excerpt: "Quick walkthrough of hyperparameter tuning in LightGBM"
 date:   2023-07-07 21:04:11 -0500
 categories: post
 classes: wide
@@ -22,7 +22,7 @@ Like neural networks, gradient boosted trees are notorious for overfitting. Earl
 
 *[Source](https://hackernoon.com/memorizing-is-not-learning-6-tricks-to-prevent-overfitting-in-machine-learning-820b091dc42)*
 
-Hyperparameter tuning is inherently a computationally expensive endeavor, so we want to . In the example above, the training time was cut in half with early stopping!
+Computational cost is usually the limiting factor of hyperparameter tuning, so we want to decrease it as much as possible. In the mock example above, the training time was cut in half due to early stopping. This is a dramatic decrease, but the reduction in training time quickly becomes apparent when training hundreds or thousands of models while hyperparameter tuning.
 
 ## Why a randomized search and not grid search?
 
