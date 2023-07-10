@@ -106,7 +106,9 @@ param_distributions = {
 # Configure the randomized search
 random_search = RandomizedSearchCV(model,
                                    param_distributions=param_distributions,
-                                   n_iter=40, cv=3,
+                                   n_iter=40,
+                                   cv=3,
+                                   # cv=sklearn.model_selection.ShuffleSplit(n_splits=1, test_size=.25, random_state=46),  # Train/test alternative to k-folds
                                    scoring="neg_mean_squared_error",
                                    n_jobs=-1)
 
