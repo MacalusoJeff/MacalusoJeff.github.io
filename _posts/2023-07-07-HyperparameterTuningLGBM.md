@@ -30,7 +30,7 @@ Between grid search and random search, grid search generally makes more intuitiv
 
 Here's a graphic from their paper that gives an intuitive example of how random search can potentially cover more ground when there are hyperparameters that aren't as important:
 
-<img src="https://camo.githubusercontent.com/8a6c2fef40a9f6228dfb4c1085005b2cb81c40af99b0e69ab7500eedac878423/68747470733a2f2f63646e2d696d616765732d312e6d656469756d2e636f6d2f6d61782f3932332f312a5a546c516d5f575263724e714c2d6e4c6e7836474a412e706e67" width="700">
+<img src="https://raw.githubusercontent.com/MacalusoJeff/MacalusoJeff.github.io/main/assets/images/randomSearchVsGridSearch.png" width="700">
 
 *Source: [James Bergstra & Yoshua Bengio](http://jmlr.csail.mit.edu/papers/volume13/bergstra12a/bergstra12a.pdf)*
 
