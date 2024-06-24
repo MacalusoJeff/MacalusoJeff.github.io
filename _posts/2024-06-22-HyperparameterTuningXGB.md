@@ -6,8 +6,8 @@ date:   2024-06-22 21:04:11 -0500
 categories: post
 classes: wide
 header:
-    image: /assets/images/turbo-parts.jpg
-    caption: "Credit: AET Turbos"
+    image: /assets/images/turbo.jpg
+    caption: "Credit: U.S. Patent Office"
 ---
 
 This is a quick tutorial on how to tune the hyperparameters of an XGBoost model with a randomized search. It will also include early stopping to prevent overfitting and speed up training time. I believe the addition of early stopping helps set this apart from other tutorials on the topic.
