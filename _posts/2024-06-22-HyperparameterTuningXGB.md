@@ -78,7 +78,7 @@ print("MSE: ", mean_squared_error(y_test, baseline_model.predict(X_test)))
 
 ### Early stopping
 
-To give a quick example of why you should always use early stopping with gradient boosting, here is the baseline model trained with early stopping. It is using the default 100 trees, but will stop if the performance on the validation set does not improve within 5 rounds. We'll then compare the differences in training time and the model performance on the test set.
+To give a quick example of why you should almost always use early stopping with gradient boosting, here is the baseline model trained with early stopping. It is using the default 100 trees, but will stop if the performance on the validation set does not improve within 5 rounds. We'll then compare the differences in training time and the model performance on the test set.
 
 ``` python
 import time
@@ -119,13 +119,13 @@ Monigatti](https://towardsdatascience.com/beginners-guide-to-the-must-know-light
 
 I mentioned above that we can set the number of iterations for the random search. I'm setting it to 40 to keep the runtime relatively short, but you can increase it to be more likely to get better results. I am also using 10,000 trees and 20 rounds before early stopping, these were chosen somewhat arbitrarily. Ideally early stopping will prevent most runs from training the full 10,000 trees, but more trees will likely be trained if the learning rate is lower which would result in a higher computational cost. A higher number of early stopping rounds will help ensure that the model does not stop prematurely, but it will increase the computational cost by continuing to train additional trees after it is likely beginning to overfit.
 
-Note that I am using a simple train/validation/test split for the examples I ran, but I have included code for using k-folds cross validation. Just uncomment it and remove the train/test split portions.
+Note that I am using k-folds cross validation here, but I included code for using a train/validation/test split. Just uncomment it and remove the train/test split portions.
 
 #### Option 1: Using scikit-learn's [RandomizedSearchCV()](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html)
 
 This option looks ideal at first glance because it's using a function one of the best machine learning libraries. However, something a little goofy is happening. The `cv` parameter of the `RandomizedSearchCV()` function is further splitting the training set and using the newly split part as the validation set, whereas the `eval_set` argument in the `fit()` method is using the pre-determined validation set.
 
-This effectively results in two different validation sets being used for two different things - one to stop training early, and one to select the hyperparameters. Not only could this result in the model being less likely to find the optimal hyparparameters because there are two validation sets being used, but it also uses a lower amount of training data. The [XGBoost documentation](https://xgboost.readthedocs.io/en/stable/python/sklearn_estimator.html#early-stopping) recommends re-training with early stopping after performing hyperparameter tuning with cross-validation since the number of trees could differ for each fold, so we will do this at the end.
+This effectively results in two different validation sets being used for two different things - one for early stopping, and one to select the hyperparameters. Not only could this result in the model being less likely to find the optimal hyparparameters because it is validating on two different data sets, but it also uses a smaller amount of training data. The [XGBoost documentation](https://xgboost.readthedocs.io/en/stable/python/sklearn_estimator.html#early-stopping) recommends re-training with early stopping after performing hyperparameter tuning with cross-validation since the number of trees could differ for each fold, so we will do this at the end.
 
 Despite these issues, this still trains faster than had early stopping not been used and makes the model less likely to overfit. We'll run this, see how the performance compares to the non-tuned early stopping model, and then we'll evaluate another option that uses a custom built version of the randomized search with cross-validation.
 
@@ -187,7 +187,7 @@ print("MSE: ", mean_squared_error(y_test, tuned_retrained_model.predict(X_test))
     R^2:  0.9185245088513797
     MSE:  2643.3213862565526
 
-We were able to improve our R^2 score by about 1.5% and reduce our MSE by about 14% by tuning the hyperparameters. Let's see what the optimal parameters were.
+Compared to the non-tuned early stopping model we were able to improve our R^2 score by about 1.5% and reduce our MSE by about 14% by tuning the hyperparameters. Let's see what the optimal parameters were:
 
 ``` python
 # Show the optimal parameters that were obtained
@@ -211,7 +211,9 @@ We were able to improve our R^2 score by about 1.5% and reduce our MSE by about 
 
 #### Option 2: Manually
 
-This option involves more code and a handful of `for` loops. However, it will result in ensuring that the same validation set is being used both for the early stopping and for the hyperparameter search. Note that this includes options for both a train/validation/test split and using k-folds cross validation that is being determined by the `tune_with_kfolds` parameter. 
+This option involves more code and a handful of `for` loops that are not exactly optimized. However, it will result in ensuring that the same validation set is being used both for the early stopping and for the hyperparameter search.
+
+Note that this includes options for both a train/validation/test split and using k-folds cross validation that is being determined by the `tune_with_kfolds` parameter. This could be much shorter if only using one, but I wanted to include both options.
 
 ``` python
 from sklearn.base import clone
@@ -219,7 +221,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import KFold
 from tqdm import tqdm
 
-# Use train/val/test split or k-folds
+# Use train/val/test split or k-folds cross validation
 tune_with_kfolds = True
 
 # Define the parameter distributions for hyperparameter tuning
@@ -267,7 +269,8 @@ for iteration in tqdm(range(num_iterations)):
     sampled_params = sample_from_param_distributions(param_distributions)
 
     # Train the model, get the performance on the validation set
-    model = xgb.XGBRegressor(n_estimators=10000, early_stopping_rounds=20, n_jobs=-1, random_state=46, **sampled_params)
+    model = xgb.XGBRegressor(n_estimators=10000, early_stopping_rounds=20,
+                             n_jobs=-1, random_state=46, **sampled_params)
 
     # Perform the tuning with either k-folds or train/test split
     if tune_with_kfolds == True:
@@ -301,7 +304,8 @@ for iteration in tqdm(range(num_iterations)):
 # Re-train with the optimal hyperparams
 # Re-perform early stopping if k-folds was used for tuning
 if tune_with_kfolds == True:
-    tuned_model = xgb.XGBRegressor(**optimal_params, n_jobs=-1, random_state=46, n_estimators=10000, early_stopping_rounds=20)
+    tuned_model = xgb.XGBRegressor(**optimal_params, n_jobs=-1, random_state=46,
+                                   n_estimators=10000, early_stopping_rounds=20)
     tuned_model.fit(X_train, y_train, eval_set=[(X_val, y_val)], verbose=False)
     optimal_params["n_estimators"] = tuned_model.best_iteration
 else:
@@ -319,7 +323,7 @@ print("MSE: ", mean_squared_error(y_test, tuned_model.predict(X_test)))
     R^2:  0.9191275594609924
     MSE:  2623.756526310182
 
-This option seemingly performed better than the `RandomizedSearchCV()` option, but it could be due to the randomness. This custom implementation is less optimized (especially for k-folds) so it will likely take longer to tune.
+This option seemingly performed better than the `RandomizedSearchCV()` option, but it could be due to the randomness. This custom implementation is less optimized (especially for k-folds) so it will likely take longer to run than the first option.
 
 ## Next steps
 
