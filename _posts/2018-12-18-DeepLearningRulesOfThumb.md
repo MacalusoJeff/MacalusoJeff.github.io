@@ -24,7 +24,7 @@ This isn’t a book review for [Deep Learning](https://www.deeplearningbook.org/
     - Deeper (more layers), thinner (smaller layers) networks are more difficult to optimize but tend to yield better generalization error.
 -   Always use early stopping.
     -   Two early stopping methods:
-        1.  Re-train the model again with new parameters on the entire training set, and stop when hitting same number of training steps as the previous model at the early stopping point.
+        1.  Re-train the model again with new parameters on the training and validation sets, and stop when hitting same number of training steps as the previous model at the early stopping point.
         2. Keep the parameters obtained at the early stop, continue training with all the data, and stop when the average training error falls below the training error at the previous early stopping point.
 -   It’s probably a good idea to use dropout.
     -   Use a 0.8 keep probability on the input layers and 0.5 for hidden layers.
@@ -92,7 +92,7 @@ This isn’t a book review for [Deep Learning](https://www.deeplearningbook.org/
 -   It’s optimal to use different regularization coefficients at each layer, but use the same weight decay at all layers. <sub>(pg. 223)</sub>
 -   Use early stopping. It’s an efficient hyperparameter to tune, and it will prevent unnecessary computations. <sub>(pg. 241)</sub>
     -   Two methods for early stopping:
-        1.    Re-train the model again with new parameters on the entire training set, and stop when hitting same number of training steps as the previous model at the early stopping point. <sub>(pg. 241)</sub>
+        1.    Re-train the model again with new parameters on the entire training and validation sets, and stop when hitting same number of training steps as the previous model at the early stopping point. <sub>(pg. 241)</sub>
         2. Keep the parameters obtained at the early stop, continue training with all the data, and stop when the average training error falls below the training error at the previous early stopping point. <sub>(pg. 242)</sub>
 -   Model averaging (bagging, boosting, etc.) almost always increase predictive performance at the cost of computational power. <sub>(pg. 249)</sub>
     -   Averaging tends to work well because different models will usually not make all the same errors on the test set. <sub>(pg. 249)</sub>
